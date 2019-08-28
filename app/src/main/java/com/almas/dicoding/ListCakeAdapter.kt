@@ -34,7 +34,7 @@ class ListCakeAdapter(val listCake: ArrayList<Cake>) : RecyclerView.Adapter<List
 
         Glide.with(holder.itemView.context)
             .load(photo)
-            .apply(RequestOptions().override(65,65))
+            .apply(RequestOptions().override(200,100))
             .into(holder.imgPhoto)
 
         holder.tvName.text = name
