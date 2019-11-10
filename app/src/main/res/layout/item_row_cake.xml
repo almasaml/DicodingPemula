@@ -30,6 +30,14 @@
                 android:textStyle="bold"
                 tools:text="@string/cake_name" />
         <TextView
+                android:id="@+id/tvrilis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="tanggal" />
+        <TextView
                 android:id="@+id/tv_item_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

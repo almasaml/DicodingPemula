@@ -3,4 +3,5 @@
     <string name="cake_name">Nama Kue</string>
     <string name="from">description</string>
     <string name="detail_cake">Detail Cake</string>
+    <string name="rilis_cake">tanggal rilis</string>
 </resources>

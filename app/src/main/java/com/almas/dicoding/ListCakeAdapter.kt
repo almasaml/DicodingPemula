@@ -5,14 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import org.w3c.dom.Text
 import java.util.ArrayList
 
-class ListCakeAdapter(val listCake: ArrayList<Cake>) : RecyclerView.Adapter<ListCakeAdapter.ListViewHolder>() {
+class ListCakeAdapter(val listCake: ArrayList<Movie>) : RecyclerView.Adapter<ListCakeAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -30,14 +28,15 @@ class ListCakeAdapter(val listCake: ArrayList<Cake>) : RecyclerView.Adapter<List
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, detail, photo) = listCake[position]
+        val (judul, rilis, detail, poster) = listCake[position]
 
         Glide.with(holder.itemView.context)
-            .load(photo)
+            .load(poster)
             .apply(RequestOptions().override(65,65))
             .into(holder.imgPhoto)
 
-        holder.tvName.text = name
+        holder.tvName.text = judul
+        holder.tvRelease.text = rilis
         holder.tvDetail.text = detail
 
         holder.itemView.setOnClickListener{ onItemClickCallback.onItemClicked(listCake[holder.adapterPosition])        }
@@ -45,11 +44,12 @@ class ListCakeAdapter(val listCake: ArrayList<Cake>) : RecyclerView.Adapter<List
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
+        var tvRelease: TextView = itemView.findViewById(R.id.rilis)
         var tvDetail: TextView = itemView.findViewById(R.id.tv_item_from)
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
     }
 
     interface OnItemClickCallback{
-        fun onItemClicked(data : Cake)
+        fun onItemClicked(data : Movie)
     }
 }

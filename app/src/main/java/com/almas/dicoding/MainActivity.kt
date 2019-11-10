@@ -12,7 +12,7 @@ import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private lateinit var rvCake: RecyclerView
-    private var list: ArrayList<Cake> = arrayListOf()
+    private var list: ArrayList<Movie> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         rvCake = findViewById(R.id.rv_cake)
         rvCake.setHasFixedSize(true)
 
-        list.addAll(CakeData.listData)
+        list.addAll(MovieData.listData)
         showRecyclerList()
 
 
@@ -33,12 +33,10 @@ class MainActivity : AppCompatActivity() {
         rvCake.adapter = listCakeAdapter
 
         listCakeAdapter.setOnItemClickCallback(object : ListCakeAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: Cake) {
+            override fun onItemClicked(data: Movie) {
                 //showSelectedCake(data)
                     val intent = Intent(this@MainActivity, MainDetail::class.java)
-                    intent.putExtra(MainDetail.EXTRA_NAME, data.name)
-                    intent.putExtra(MainDetail.EXTRA_DETAILS, data.detail)
-                    intent.putExtra(MainDetail.EXTRA_PHOTO, data.photo)
+                    intent.putExtra(MainDetail.EXTRA_NAME, data)
                     startActivity(intent)
             }
         })
